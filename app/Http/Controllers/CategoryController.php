@@ -25,29 +25,28 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
-    public function show($id)
+    public function show()
     {
-       
+        $categories = Category::all();
+        
+        if(!$categories){
+            return redirect()->route('category.index');
+        }
+        
+        return view(
+        'category.show', 
+        compact('categories')
+        );
+  
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         //
@@ -61,6 +60,16 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categories = Category::find($id);
+
+        if(!$categories)
+        {
+            redirect()->route('category.index');
+        }
+
+        $categories->delete();
+        return redirect()
+                ->route('category.index')
+                ->with('message','Categoria deletada');
     }
 }

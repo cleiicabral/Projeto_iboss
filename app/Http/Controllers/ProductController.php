@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -43,9 +44,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+    
+       $categories = $product->categories()->get();
+       
+
+       foreach($categories as $category)
+       {
+        echo "<h1>{$category->name}</h1>";
+       }
+       
     }
 
     /**
