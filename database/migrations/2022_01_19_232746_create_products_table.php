@@ -15,14 +15,13 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id'); //Chave estrangeira
             $table->string('name');
             $table->double('price',10,2);
             $table->string('description');
             $table->double('quantity',10,2);
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories');
+            
         });
     }
 
