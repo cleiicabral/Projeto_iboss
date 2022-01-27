@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
+
 class ProductController extends Controller
 {
     /**
@@ -24,36 +25,50 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
     
+    public function store(Request $request )
+    {
+
+        $product_save = Product::create($request->all());
+        if($product_save)
+        {
+            $product = Product::find($product_save->id);
+
+            if($product)
+            {
+                
+                $id=1;
+                $product->categories()->attach($id);
+
+            }else
+                {
+                return redirect()->back();
+                }
+        
+        }
+        
+        
+        return redirect()->route('product.index');
+    }
+
+  
+    public function show($id)
+    {
+       $product = Product::find($id);
        $categories = $product->categories()->get();
        
-
-       foreach($categories as $category)
-       {
-        echo "<h1>{$category->name}</h1>";
-       }
+        if(!$categories){
+        return redirect()->route('category.index');
+        }
+    
+        dd($product);
+        return view(
+        'product.show', 
+        compact('categories', 'product')
+        );
        
     }
 

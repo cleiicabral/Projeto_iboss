@@ -7,17 +7,20 @@ use App\Models\Category;
 
 class CategoryController extends Controller
 {
-   
+
+    //finalizado
     public function index()
     {
         return view('category.index');
     }
 
+    //finalizado
     public function create()
     {
         return view('category.create');
     }
 
+    //finalizado
     public function store(Request $request)
     {
         Category::create($request->all());
@@ -25,6 +28,7 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+    //finalizado
     public function show()
     {
         $categories = Category::all();
@@ -43,33 +47,45 @@ class CategoryController extends Controller
     
     public function edit($id)
     {
-        
-    }
+        $category = Category::find($id);
 
+        if(!$category)
+        {
+            return redirect()->back();
+        }
+
+        return view('category.edit', compact('category'));
+    }
    
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        if(!$category)
+        {
+            return redirect()->back();
+        }
+
+        $category->update($request->all());
+
+        return redirect()
+        ->route('category.show')
+        ->with('message', 'Categoria atualizada com sucesso');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    //finalizado
     public function destroy($id)
     {
-        $categories = Category::find($id);
+        $category = Category::find($id);
 
-        if(!$categories)
+        if(!$category)
         {
             redirect()->route('category.index');
         }
 
-        $categories->delete();
+        $category->delete();
         return redirect()
-                ->route('category.index')
+                ->route('category.show')
                 ->with('message','Categoria deletada');
     }
 }

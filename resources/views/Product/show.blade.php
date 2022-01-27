@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Categorias show</title>
+    <title>Produtos show</title>
 </head>
 <body>
     
-    <h1>Mostrando categorias: </h1>
+    <h1>Mostrando produtos e suas categorias: </h1>
     <hr>
     <hr>
     
@@ -23,6 +23,13 @@
 @endif
 
 <ul>
+    @foreach ($product as $products )
+   
+        
+        
+        <li><strong>Nome:</strong> {{$products->name}}  </li>
+        
+    @endforeach
     @foreach ($categories as $category)
     <form action="{{route('category.destroy',$category->id)}}" method="post">
         @csrf
