@@ -23,22 +23,12 @@
 @endif
 
 <ul>
-    @foreach ($product as $products )
-   
-        
-        
-        <li><strong>Nome:</strong> {{$products->name}}  </li>
-        
-    @endforeach
+    
+    <li><strong>Produto:</strong> {{$product->id}}  </li>
+    <br>
+    <li>Categorias:</li>
     @foreach ($categories as $category)
-    <form action="{{route('category.destroy',$category->id)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <li><strong>Nome:</strong> {{$category->name}}  <strong>ID:</strong> {{$category->id}}</li>
-        [<a href="{{route('category.edit',$category->id)}}">Editar</a>]
-        <button type="submit">Deletar</button>
-        <hr>
-    </form>
+       <li> {{$category->name}}  </li>
     @endforeach
     
 
