@@ -24,7 +24,7 @@ class ProductController extends Controller
     //finalizado
     public function store(Request $request )
     {
-
+        
         $product_save = Product::create($request->all());
         if($product_save)
         {
@@ -32,9 +32,13 @@ class ProductController extends Controller
 
             if($product)
             {
+                $categoriesSelect = [$request->checkbox];
+                foreach($categoriesSelect as $categoriesSelected)
+                {
+                    
+                    $product->categories()->attach($categoriesSelected);
+                }
                 
-                $id=1;
-                $product->categories()->attach($id);
 
             }else
                 {
@@ -63,6 +67,30 @@ class ProductController extends Controller
         compact('categories', 'product')
         );
        
+    }
+
+    public function listProductAll()
+    {
+        $getProducts =  Product::all();
+        foreach($getProducts as $product)
+        {
+            $getCategories = $product->categories()->get();
+            
+        };
+        foreach($getCategories as $categorie){
+            $products = [$getProducts,
+            'name' => $categorie];
+        };
+        
+        
+        
+        
+        
+        return view(
+            'listProducts', 
+            compact('products','categories')
+            );
+
     }
 
  
@@ -98,5 +126,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function createProduct(){
+
+        $categoriesAll = CategoryController::returnCategoriesAll();
+
+
+        return view('cadastroProduto', compact('categoriesAll'));
+        
     }
 }

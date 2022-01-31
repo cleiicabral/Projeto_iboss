@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Auth;
 
 //products
 Route::get('products/index',[ProductController::class,'index'])->name('product.index');
@@ -20,6 +21,19 @@ Route::post('category/store',[CategoryController::class,'store'])->name('categor
 Route::get('category/show',[CategoryController::class , 'show'])->name('category.show');
 Route::delete('category/destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
 
+//Rota para cadastro de produtos
+Route::get('cadastroProduto', [ProductController::class,'createProduct'])->name('cadastroProduto');
+
+Route::get('cadastroCategoria', function(){
+    return view('cadastroCategoria');
+})->name('cadastroCategoria');
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('listProducts',[ProductController::class,'listProductAll'])->name('list.products');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -88,4 +88,9 @@ class CategoryController extends Controller
                 ->route('category.show')
                 ->with('message','Categoria deletada');
     }
+
+    public static function returnCategoriesAll(){
+        $categories = Category::all();
+        return $categories;
+    }
 }
