@@ -24,7 +24,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('cadastroProduto')}}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('projeto.iboss')}}">Home</a>
                   </li>
 
                   <li class="nav-item dropdown">
@@ -32,9 +32,9 @@
                       Produtos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                      <li><a class="dropdown-item" href="{{route('cadastroProduto')}}">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Buscar</a></li>
-                      <li><a class="dropdown-item" href="#">Listar</a></li>
+                      <li><a class="dropdown-item" href="{{route('list.products')}}">Listar</a></li>
                     </ul>
                   </li>
 
@@ -43,7 +43,7 @@
                       Categorias
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="{{route('cadastroCategoria')}}">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Buscar</a></li>
                       <li><a class="dropdown-item" href="#">Listar</a></li>
                     </ul>

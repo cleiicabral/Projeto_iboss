@@ -22,9 +22,9 @@ Route::get('category/show',[CategoryController::class , 'show'])->name('category
 Route::delete('category/destroy/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
 
 //Rota para cadastro de produtos
-Route::get('cadastroProduto', [ProductController::class,'createProduct'])->name('cadastroProduto');
+Route::get('ProjetoIboss/cadastroProduto', [ProductController::class,'createProduct'])->name('cadastroProduto');
 
-Route::get('cadastroCategoria', function(){
+Route::get('ProjetoIboss/cadastroCategoria', function(){
     return view('cadastroCategoria');
 })->name('cadastroCategoria');
 
@@ -32,7 +32,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('listProducts',[ProductController::class,'listProductAll'])->name('list.products');
+Route::get('ProjetoIboss', function () {
+    return view('index');
+})->name('projeto.iboss');
+
+Route::get('ProjetoIboss/listProducts',[ProductController::class,'listProductAll'])->name('list.products');
 
 Auth::routes();
 
