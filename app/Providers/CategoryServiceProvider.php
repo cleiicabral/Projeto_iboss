@@ -6,7 +6,7 @@ use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Interfaces\Category\CategoryRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
-class Category extends ServiceProvider
+class CategoryServiceProvider extends ServiceProvider
 {
   
     public function register()

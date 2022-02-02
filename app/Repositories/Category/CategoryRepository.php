@@ -34,7 +34,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function create(Request $request): ? Category
     {
-        return $this->model->create($request);
+        return $this->model->create($request->all());
     }
 
     public function update(Request $request, int $id): ?Category

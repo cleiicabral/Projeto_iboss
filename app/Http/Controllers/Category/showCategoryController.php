@@ -1,26 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Category;
 
-use App\Http\Services\Category\CategoryService;
-use App\Models\Category;
+use App\Http\Services\Category\showCategoryService;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
-class CategoryController
+
+class showCategoryController
 {
 
-    protected $service;
-
-    public function __construct(CategoryService $service)
-    {
-        return $this->service = $service;
-    }
-
-    public function index(): ?Collection
+    public function show(showCategoryService $service, int $id): ?Collection
     {
         try {
-           return $this->service->index();
+           return $service->execute($id);
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()],400);
         }   

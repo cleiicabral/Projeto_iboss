@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 interface CategoryRepositoryInterface
 {
 
-    public function index(): ?Collection;
+    public function index(): ? Collection;
     public function show(int $id): ?Collection;
     public function create(Request $request): ?Category;
     public function update(Request $request, int $id): ?Category;

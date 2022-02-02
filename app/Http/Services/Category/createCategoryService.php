@@ -17,7 +17,7 @@ protected $repository;
         return $this->repository = $repository;
     }
 
-    public function create($request): ? Category
+    public function execute(Request $request) : ? Category
     {
         $categories = $this->repository->create($request);
         if (!$categories)
