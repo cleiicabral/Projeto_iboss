@@ -10,16 +10,17 @@ use Illuminate\Database\Eloquent\Collection;
 class indexCategoryService
 {
 
-    protected $repository;
+    private $repository;
 
     public function __construct(CategoryRepositoryInterface $repository)
     {
         return $this->repository = $repository;
     }
 
-    public function execute(): ? Collection
+    public function execute(): ?Collection
     {
         $categories = $this->repository->index();
+        
         if (!$categories)
             throw new Exception("Nenhuma categoria encontrada");
 

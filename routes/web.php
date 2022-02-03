@@ -17,11 +17,12 @@ Route::get('products/show/{id}',[ProductController::class,'show'])->name('produc
 
 
 //categories
-Route::put('category/{id}',[updateCategoryController::class,'update'])->name('category.update');
 //Route::get('category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
-Route::get('category/index',[indexCategoryController::class,'index'])->name('category.index');
 //Route::post('category/new', [createCategoryController::class,'create'])->name('category.create');
 //Route::post('category/store',[CategoryController::class,'store'])->name('category.store');
+Route::put('category/{id}',[updateCategoryController::class,'update'])->name('category.update');
+Route::get('category/index',[indexCategoryController::class,'index'])->name('category.index');
+
 Route::get('category/show/{id}',[showCategoryController::class , 'show'])->name('category.show');
 Route::delete('category/destroy/{id}',[destroyCategoryController::class,'destroy'])->name('category.destroy');
 
