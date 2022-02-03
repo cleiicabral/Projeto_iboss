@@ -4,6 +4,7 @@ namespace App\Repositories\Category;
 
 use App\Models\Category;
 use App\Repositories\Interfaces\Category\CategoryRepositoryInterface;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,13 @@ class CategoryRepository implements CategoryRepositoryInterface
         
     }
     
-    public function show($id): ?Collection
-    {
-        return $this->model->find($id);
+    public function show(int $id): ? Category
+    { 
+        try {
+         return $this->model::find($id);
+        } catch (\Throwable $th) {
+           return null;
+        }
     }
 
     public function create(Request $request): ? Category
@@ -37,13 +42,27 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $this->model->create($request->all());
     }
 
-    public function update(Request $request, int $id): ?Category
+    public function update(Request $request, int $id): ? Category
     {
-        return $this->model->find($id)->update();
+        try {
+            $result =$this->model->find($id); 
+            $result->update($request->all());
+        } catch (\Throwable $th) {
+            return null;
+        }
+        
+        return  $result;
     }
 
-    public function destroy(int $id): ?Category
+    public function destroy(int $id): ? Category
     {
-        return $this->model->find($id)->delete();
+        try {
+            $result =  $this->model->find($id);
+            $result->delete();
+        } catch (\Throwable $th) {
+            return null;
+        }
+        
+        return $result;
     }
 }

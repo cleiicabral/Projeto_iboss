@@ -5,6 +5,7 @@ namespace App\Http\Services\Category;
 use App\Models\Category;
 use App\Repositories\Interfaces\Category\CategoryRepositoryInterface;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 
 class updateCategoryService
 {
@@ -16,7 +17,7 @@ class updateCategoryService
         return $this->repository = $repository;
     }
 
-    public function execute($request, $id): ?Category
+    public function execute($request, $id): ? Category
     {
         $categories = $this->repository->update($request, $id);
         if (!$categories)

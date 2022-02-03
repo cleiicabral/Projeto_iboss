@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\Category\createCategoryController;
+use App\Http\Controllers\Category\updateCategoryController;
+use App\Http\Controllers\Category\showCategoryController;
 use App\Http\Controllers\Category\indexCategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Category\destroyCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Contracts\Container\BindingResolutionException;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,9 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 |
 */
 
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});*/
+});
 
 Route::post('category/new', [createCategoryController::class,'create']);
 
@@ -29,6 +30,8 @@ Route::get('/teste', function () {
     return response()->json(["message" => "Api painel premialo 1.0"]);
 });
 
-Route::get('products/index',[ProductController::class,'index'])->name('product.index');
-Route::post('category/new', [createCategoryController::class,'create'])->name('category.create');
-Route::get('category/index',[indexCategoryController::class,'index'])->name('category.index');
+Route::post('category/create', [createCategoryController::class, 'create']);
+Route::get('category/index', [indexCategoryController::class, 'index']);
+Route::get('category/show/{id}', [showCategoryController::class, 'show']);
+Route::post('category/update/{id}', [updateCategoryController::class, 'update']);
+Route::delete('category/destroy/{id}', [destroyCategoryController::class, 'destroy']);

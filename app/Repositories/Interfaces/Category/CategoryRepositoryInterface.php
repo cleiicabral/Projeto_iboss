@@ -10,9 +10,9 @@ interface CategoryRepositoryInterface
 {
 
     public function index(): ? Collection;
-    public function show(int $id): ?Collection;
+    public function show(int $id): ? Category;
     public function create(Request $request): ?Category;
-    public function update(Request $request, int $id): ?Category;
+    public function update(Request $request, int $id): ? Category;
     public function destroy(int $id): ?Category;
 
 }
