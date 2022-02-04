@@ -10,7 +10,8 @@ use Exception;
 
 class createCategoryService 
 {
-protected $repository;
+
+    protected $repository;
 
     public function __construct(CategoryRepositoryInterface $repository)
     {
@@ -21,6 +22,7 @@ protected $repository;
     {
         
         $categories = $this->repository->create($categoryDto);
+        
         if (!$categories)
             throw new Exception("Nenhuma categoria encontrada");
             

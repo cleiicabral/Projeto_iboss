@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Category;
 
 use App\Dto\Category\createCategoryDto;
 use App\Http\Services\Category\createCategoryService;
-use App\Models\Category;
 use Illuminate\Http\Request;
 
 

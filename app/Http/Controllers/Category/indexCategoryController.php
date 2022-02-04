@@ -14,7 +14,6 @@ class indexCategoryController
     {
         try {
             return $service->execute();
-           //return $retorno = CategoryResource::collection($result);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()],400);
         }   
