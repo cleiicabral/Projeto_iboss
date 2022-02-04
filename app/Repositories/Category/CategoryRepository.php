@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Category;
 
+use App\Dto\Category\createCategoryDto;
 use App\Models\Category;
 use App\Repositories\Interfaces\Category\CategoryRepositoryInterface;
-use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -37,16 +37,16 @@ class CategoryRepository implements CategoryRepositoryInterface
         }
     }
 
-    public function create(Request $request): ? Category
+    public function create(createCategoryDto $categoryDto): ? Category
     {
-        return $this->model->create($request->all());
+        return $this->model->create($categoryDto->toArray());
     }
 
-    public function update(Request $request, int $id): ? Category
+    public function update(createCategoryDto $categoryDto, int $id): ? Category
     {
         try {
             $result =$this->model->find($id); 
-            $result->update($request->all());
+            $result->update($categoryDto->toArray());
         } catch (\Throwable $th) {
             return null;
         }

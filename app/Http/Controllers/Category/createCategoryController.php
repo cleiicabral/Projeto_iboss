@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Dto\Category\createCategoryDto;
 use App\Http\Services\Category\createCategoryService;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -10,10 +11,11 @@ use Illuminate\Http\Request;
 class createCategoryController
 {
 
-    public function create(createCategoryService $service, Request $request): ? Category
+    public function create(createCategoryService $service, Request $request)
     {
         try { 
-           return $service->execute($request);
+            $result = $service->execute(new createCategoryDto($request->all()));
+           return $result;
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()],400);
         }   

@@ -4,9 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class Product extends ServiceProvider
+class ProductServiceProvider extends ServiceProvider
 {
-    /**
+/**
      * Register services.
      *
      * @return void
@@ -26,3 +26,4 @@ class Product extends ServiceProvider
         //
     }
 }
+

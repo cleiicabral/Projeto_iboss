@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Category;
 
+use App\Dto\Category\createCategoryDto;
 use App\Models\Category;
 use App\Repositories\Interfaces\Category\CategoryRepositoryInterface;
 use Exception;
@@ -17,9 +18,9 @@ class updateCategoryService
         return $this->repository = $repository;
     }
 
-    public function execute($request, $id): ? Category
+    public function execute(createCategoryDto $categoryDto, $id): ? Category
     {
-        $categories = $this->repository->update($request, $id);
+        $categories = $this->repository->update($categoryDto, $id);
         if (!$categories)
             throw new Exception("Não foi possível atualizar a categoria");
 

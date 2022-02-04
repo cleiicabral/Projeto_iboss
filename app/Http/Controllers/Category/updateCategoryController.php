@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Category;
 
+use App\Dto\Category\createCategoryDto;
 use App\Http\Services\Category\updateCategoryService;
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 
@@ -15,7 +15,8 @@ class updateCategoryController
     {
         
         try {
-           return $service->execute($request, $id);
+            $result = $service->execute(new createCategoryDto($request->all()), $id);
+           return $result;
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()],400);
         }   
