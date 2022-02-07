@@ -14,6 +14,7 @@ class createProductDto extends DataTransferObject
     public float $price;
     public string $description;
     public int $quantity;
+    public int $idCategories;
 
     public function __construct(array $data)
     {
@@ -22,6 +23,7 @@ class createProductDto extends DataTransferObject
         $this->price = !empty($data['price']) ? $data['price'] : 0;
         $this->description = !empty($data['description']) ? $data['description'] : '';
         $this->quantity = !empty($data['quantity']) ? $data['quantity']: 0;
+        $this->idCategories = !empty($data['idCategories']) ? $data['idCategories']: 0;
 
     }
 

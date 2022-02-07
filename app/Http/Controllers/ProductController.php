@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 
 
-class ProductController extends Controller
+/* class ProductController extends Controller
 {
 
     //finalizado
@@ -117,3 +117,4 @@ class ProductController extends Controller
         return view('cadastroProduto', compact('categoriesAll'));
     }
 }
+ */

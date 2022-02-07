@@ -43,8 +43,13 @@ class ProductRepository implements ProductRepositoryInterface
     public function create(createProductDto $productDto): ? Product
     {
 
-        return $this->model->create($productDto->toArray());
-    
+        
+         $products = $productDto->toArray(); 
+         $resultSaveProduct = $this->model->create($products);
+         $productIndex = Product::find($resultSaveProduct->id);
+         $productIndex->categories()->attach($products['idCategories']);
+        
+         return $resultSaveProduct;
     }
 
     public function update(createProductDto $productDto, int $id): ?Product

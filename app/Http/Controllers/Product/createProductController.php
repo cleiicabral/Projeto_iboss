@@ -14,7 +14,7 @@ class createProductController{
         try {
             $product = new createProductDto($request->all());
             $result = $service->execute($product);
-            return $product->toArray();
+            return $result;
         } catch (\Throwable $th) {
             return response()->json(['error' => $th ->getMessage()],400);
         }
