@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\Dto\Product\createProductDto;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Services\Product\UpdateProductService;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class UpdateProductController
 {
 
-    public function update(UpdateProductService $service,Request $request, int $id)
+    public function update(UpdateProductService $service,UpdateProductRequest $request, int $id)
     {
         try {
         

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Category;
 
 use App\Dto\Category\createCategoryDto;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Services\Category\updateCategoryService;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 class updateCategoryController
 {
 
-    public function update(updateCategoryService $service, Request $request, int $id): ? Category
+    public function update(updateCategoryService $service, UpdateCategoryRequest $request, int $id): ? Category
     {
         
         try {
